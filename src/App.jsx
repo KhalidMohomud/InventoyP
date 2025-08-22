@@ -16,7 +16,7 @@ function App() {
     localStorage.getItem('isAuthenticated') === 'true'
   );
 
-  // keep state in sync if localStorage changes in another tab
+  // Keep state in sync if localStorage changes in another tab
   useEffect(() => {
     const handleStorageChange = () => {
       setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
@@ -25,14 +25,14 @@ function App() {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-  // handle login success
+  // Handle login success
   const handleLoginSuccess = (email) => {
     localStorage.setItem('isAuthenticated', 'true');
     localStorage.setItem('userEmail', email);
     setIsAuthenticated(true);
   };
 
-  // handle logout
+  // Handle logout
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('userEmail');
